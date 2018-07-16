@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Syndicated Loans</title>
+
+    <!-- Bootstrap -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center">Syndicated Loans</h2>
+      </div>
+      <div class="alert" id="error" style="display:none;"></div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="new-loan-box">
+            <button class="btn btn-outline-dark btn-sm" onclick="App.showLoanForm()"><i class="fa fa-plus"></i> New Loan</button>
+            
+            <div id="loan-form" style="display:none;">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="amount-input" placeholder="Enter Loan Amount" />
+              </div>
+              <strong>Select participating banks: </strong>
+              <div class="form-check">
+                <input class="form-check-input" name="banks" type="checkbox" value="Bank of Stone Henge" id="bank1">
+                <label class="form-check-label" for="bank1">
+                  Bank of Stone Henge
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" name="banks" type="checkbox" value="Cornwall County Bank" id="bank2">
+                <label class="form-check-label" for="bank2">
+                  Cornwall County Bank
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" name="banks" type="checkbox" value="Ipswich Peoples Bank" id="bank3">
+                <label class="form-check-label" for="bank3">
+                  Ipswich Peoples Bank
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" name="banks" type="checkbox" value="Royal Bank of Slatester" id="bank4">
+                <label class="form-check-label" for="bank4">
+                  Royal Bank of Slatester
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" name="banks" type="checkbox" value="World Development Bank" id="bank5">
+                <label class="form-check-label" for="bank5">
+                  World Development Bank
+                </label>
+              </div>
+              <div class="padder"></div>
+              <button class="btn btn-dark btn-sm" onclick="App.createLoan()">Add Loan</button>
+              <button class="btn btn-link btn-sm" onclick="$('#loan-form').hide()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Issued Loans</h5>
+          <table class="table table-striped" id="loan-list"></table>
+          <div class="help-text" id="loan-list-help" style="display:none">
+            Add loans to view them here. Click on loans in this list to add collaterals to the loan and store them on the Ethereum blockchain.
+          </div>
+        </div>
+        <div class="col-md-8">
+          <input type="hidden" id="hidden-loan-id" />
+          <table class="table table-condensed table-striped" id="loan-details">
+            <tr>
+              <th>Loan ID:</th>
+              <td id="loan-id"></td>
+            </tr>
+            <tr>
+              <th>Loan Amount:</th>
+              <td id="loan-amount"></td>
+            </tr>
+            <tr>
+              <th>Participating Banks:</th>
+              <td id="loan-banks"></td>
+            </tr>
+            <tr>
+              <th>Collateral Info:</th>
+              <td id="loan-collateral"></td>
+            </tr>
+            <tr id="collateral-form" style="display:none;">
+              <th>Collateral Reference:</th>
+              <td>
+                <input type="text" class="form-control" id="collateral-reference" placeholder="Enter Collateral reference number..." />
+                <div class="padder"></div>
+                <button class="btn btn-outline-dark btn-sm" onclick="App.attachCollateral()">Add Collateral to Loan</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+    <!-- Custom Scripts -->
+    <script src="app.js"></script>
+  </body>
+</html>
